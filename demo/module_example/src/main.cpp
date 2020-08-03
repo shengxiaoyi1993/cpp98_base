@@ -4,7 +4,7 @@
 
  int main() {
    std::cout<<SECONDS_PER_YEAR<<std::endl;
+   printList();
 
   return 0;
 }
-  

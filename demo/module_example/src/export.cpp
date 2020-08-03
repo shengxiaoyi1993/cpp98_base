@@ -1,14 +1,19 @@
 #include "export.h"
+#include <iostream>
 
 void printList(){
-  std::vector<int> v;
-  v.push_back(1);
-  v.push_back(2);
-  v.push_back(3);
-  v.push_back(1);
-  for (int i = 0; i < v.size(); i++) {
-    std::cout<<v[i]<<std::endl;
-  }
+  const unsigned int bigBigNum=4096;
+try
+{
+    //分配内存
+    a= new int[bigBigNum];
+}
+catch(std::bad_alloc)
+{
+    //异常处理
+    //弹出提示对话框
+    // 返回
+}
   return;
 
 }

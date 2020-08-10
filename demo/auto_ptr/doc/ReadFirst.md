@@ -19,3 +19,6 @@
 - auto_ptr的终点：被一个函数调用
 - auto_ptr起点：auto_ptr作为返回值返回
 - 当不想发生转移就避免使用auto_ptr,不能更改auto_ptr的拥有权,但可改变值
+
+- auto_ptr cannot point to `array`
+- auto_ptr 不能作为STL容器的元素

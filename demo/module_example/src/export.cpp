@@ -3,6 +3,7 @@
 
 void printList(){
   const unsigned int bigBigNum=4096;
+  int *a;
 try
 {
     //分配内存

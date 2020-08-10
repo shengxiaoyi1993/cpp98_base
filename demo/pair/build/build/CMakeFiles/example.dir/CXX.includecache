@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/msys64/home/sxy/Github/cpp98_base/demo/pair/src/export.cpp
+export.h
+C:/msys64/home/sxy/Github/cpp98_base/demo/pair/src/export.h
+iostream
+-
+
+C:/msys64/home/sxy/Github/cpp98_base/demo/pair/src/export.h
+vector
+-
+iostream
+-
+
+C:/msys64/home/sxy/Github/cpp98_base/demo/pair/src/main.cpp
+iostream
+-
+export.h
+C:/msys64/home/sxy/Github/cpp98_base/demo/pair/src/export.h
+

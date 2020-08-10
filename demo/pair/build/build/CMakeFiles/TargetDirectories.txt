@@ -1,3 +1,0 @@
-C:/msys64/home/sxy/Github/cpp98_base/demo/pair/build/build/CMakeFiles/rebuild_cache.dir
-C:/msys64/home/sxy/Github/cpp98_base/demo/pair/build/build/CMakeFiles/edit_cache.dir
-C:/msys64/home/sxy/Github/cpp98_base/demo/pair/build/build/CMakeFiles/example.dir

@@ -69,3 +69,24 @@
   - all containers has two typies of iterators
     - container::iterator        changable
     - conatiner::const_iterator  readonly
+  - pre-increment/pre-decrement should be better
+
+  5.3.2 iterator categories
+  - bidirectional iterator
+    - list,set,multiset,map,multimap
+  - random access iterator
+    - compare operator (<,>)
+    - vector,string,deque
+    - avoid to use for wide use
+
+## 5.4 algorithms
+  - range
+  - insert interator
+    - back_inserter
+    - front_inserter
+    - inserter
+  - stream iterators
+
+  - reverse iterators
+
+## 5.6 manipulating algorithms

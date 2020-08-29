@@ -90,3 +90,21 @@
   - reverse iterators
 
 ## 5.6 manipulating algorithms
+
+## 5.8 function as params
+### 5.8.1 example
+- std::transform
+### 5.8.2 predictes
+- Unary predictes
+  - find_if
+- Binary predictes
+  - sort()
+
+## 5.9 Functors,Function Objects
+- as params of algorithms
+- when normal function can not work
+- define operator () and you can use this class as function
+- features
+  - smart functions:has member val and func,state
+  - has its own type
+  - faster

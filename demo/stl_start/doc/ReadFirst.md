@@ -108,3 +108,25 @@
   - smart functions:has member val and func,state
   - has its own type
   - faster
+
+## 5.10 elements of container
+### 5.10.1 condition
+- 必须可通过copy构造函数进行复制
+- 必须可通过asignment进行赋值
+- 必须可通过析构函数进行销毁
+
+### 5.10.2 value & reference 
+- stl 支持value语义
+- 使用引用时注意reference指向的对象健在；警惕偶尔出现的循环引用
+- 使用引用时可以用指针代替，指针作为容器元素；但是不要用智能指针auto_ptr，因为一经使用就会销毁
+
+## 5.11 STL内部的错误处理和异常机制
+- 逻辑性错误
+- 执行器错误
+### 5.11.1 Error handling:效率优先，安全次之
+- 要求
+  - 迭代器合法有效，如正常初始化。注意迭代器因可能因某些操作而失效
+  - 迭代器的逾尾位置“past-to-end”不指向任何元素
+  - 区间必须是合法，从第一个迭代器出发能够到达第二个元素
+  - 若涉及区间不止一个，则第一个区间的元素数量多于后面的
+  - 覆盖动作的区间需要有足够多的数量，否则使用插入操作

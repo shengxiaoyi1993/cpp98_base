@@ -198,12 +198,58 @@
 - find() 输出目标元素的迭代器位置，若使用查找区间起始位置移到找到的区间之后，就能时先循环查找出所有元素
 
 ### 6.2.6 class vector<bool>
+- vector的特殊实现
 - 只用1个bit存储一个元素
 - 但是c++的寻址通常以byte为单位，因此无法满足所有其他vector的特性
   - reference不能返回真正的lvalue
   - 具有动态大小的位域，若需要静态大小的位域应当使用bitset
 
-##6.3 Deque
+## 6.3 Deque
 - 类似与vector，内部使用动态数据
 - 头尾部都开放
   - 内部使用一组独立区块实现，第一个区块和最后的区块向不同方向拓展
+- 第二个参数是内存模型，缺省使用c++标准库提供的allocator
+### 6.3.1 Deque能力
+- 与vector的差别
+  - Deque两端都能快速安插元素和移除元素
+  - 存取元素时,deque会多一个间接过程,因此会慢一点
+  - 迭代器用的指针是特殊的智能型指针
+  - 在非头尾两端的的任何其他地方插入或删除元素都会导致指向deque元素的任何pointers,references,iterators失效。但内存重分配效率高于vectors
+
+### 6.3.2 Deque操作函数
+  - 同vector
+  - 不提供capacity(),reserve()
+  - 提供push_back(),push_front()
+  1
+### 6.3.3 异常处理
+  - push_back() push_front()插入元素时发生异常时，该操作不带来任何效应，且不抛出异常
+
+## 6.4 Lists
+- 双向链表
+### 6.4.1 Lists的能力
+- 不支持随机存取，遍历元素速度慢
+- 插入或移除元素速度快
+- 插入或移除元素不会导致pointers references iterators 失效
+- 操作要么成功要么没有影响
+### 6.4.2 操作函数
+- 生成，复制，销毁
+- 非变动性操作
+- 赋值
+- 元素存取
+  - front()
+  - back()
+- insert remove
+  - 同时对多个元素进操作比一一操作效率更高
+  - 尽量调用成员函数，remove(),remove_if()
+
+- splice
+  - unique() 去重
+  - splice() 转移
+  - sort()   排序
+  - merage() 有序合并
+  - reverse() 反序
+
+
+### 6.4.3 Exception Handling
+- 除了sort()与赋值,要么成功要么无效
+- sort()与赋值：异常发生时不会发生泄露资源年，不与省

@@ -1,0 +1,18 @@
+## 6.6 maps 和multimaps
+- 迭代器函数和元素存取
+  - 所有元素key被视为常数，value可以更改
+  - 使用value_type传递型别以避免隐式型别转换`coll.insert(std::map<std::string,float>::value_type("otto",22.3))`
+  - 使用pair<>进行传参
+  -
+
+### 6.6.3 maps视为关联式数组
+- Non-const 支持下表操作符，支持元素的直接存取。但索引值为key值
+- 若容器中不存在对应元素，会插入该元素.value由default构造函数构造
+- 使用下标方式插入元素会满语一般安插方式，由于经历了default构造，然后实际值覆盖了构造的值
+
+### 6.6.4 异常处理
+- 同sets和multisets
+### 6.6.5 maps和multimaps实例
+
+### 6.6.6 Maps Strings  执行期指定排序准则
+- 仿函数作为比较函数，包含一个成员变量来记录仿函数的状态，通过该成员的值即可在执行期选择不同的比较函数

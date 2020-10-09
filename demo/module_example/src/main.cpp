@@ -1,44 +1,67 @@
+#define GETSTR(val) #val
+
 #include <iostream>
 #include <string>
 #include "export.h"
-#include <cstring>
-
+#include<algorithm>
+#include <vector>
+#include <sstream>
 using namespace std;
+
+
+string stringFromInt(int v_val){
+  stringstream ofs;
+  ofs<<v_val;
+  string ret;
+  ofs>>ret;
+  return ret;
+
+}
+
+void add10(int& v_val){
+  v_val+=10;
+}
+void printVal(int& v_val){
+  cout<<" "<<v_val;
+}
+
+class Add{
+private:
+  int _val;
+public:
+  Add(int v_val):_val(v_val)
+  {
+  }
+  ~Add(){
+
+  }
+  void operator()(int & v_val) const{
+    v_val+=_val;
+  }
+
+
+};
+
  int main() {
+   try {
+     vector<int> list;
+     list.push_back(1);
+     list.push_back(2);
 
-   // char line[32]="encrypted:458f15ada8e3cfdec5dbc";
-   // char key[16];
-   // char value[24];
-   // sscanf(line,"%[^:]:%24[^:]",key,value);
-   // printf("key:%s\n",key );
-   // printf("value:%s\n",value );
-   string v_str("hello world");
-   std::cout << "v_str:"<<v_str << '\n';
-   std::cout << "size:"<<v_str.size() << '\n';
-   unsigned char *pdata=new unsigned char[v_str.size()];
+     for_each(list.begin(),list.end(),add10);
+     for_each(list.begin(),list.end(),printVal);
+     for_each(list.begin(),list.end(),Add(12));
+     for_each(list.begin(),list.end(),printVal);
+     cout<<stringFromInt(__LINE__)<<endl;
+     cout<<"__LINE__:"<<string(GETSTR(__LINE__))<<endl;
 
-   memcpy(pdata,v_str.c_str(),v_str.size());
+     throw "[FUNC]: "+string(__FUNCTION__)+" [LINE: ]"+stringFromInt(__LINE__)+" [Error]: self test";
 
-   std::cout << "0:"<<hex<<(int)pdata[0] << '\n';
-   std::cout << "1:"<<hex<<(int)pdata[1] << '\n';
-   std::cout << "2:"<<hex<<(int)pdata[2] << '\n';
-   std::cout << "3:"<<hex<<(int)pdata[3] << '\n';
-   delete []pdata;
-
-   unsigned short *pshort=new unsigned short[5];
-   memcpy(pshort,v_str.c_str(),11);
-   std::cout << "0:"<<hex<<pshort[0] << '\n';
-   std::cout << "1:"<<pshort[1] << '\n';
-   std::cout << "2:"<<pshort[2] << '\n';
-   std::cout << "3:"<<pshort[3] << '\n';
-   std::cout << "0:"<<dec<<pshort[0] << '\n';
-
-   delete []pshort;
+   } catch (string msg) {
+     cout<<"msg:"<<msg<<endl;
+   }
 
 
-
-
-   printList();
 
   return 0;
 }

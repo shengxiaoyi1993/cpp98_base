@@ -1,0 +1,49 @@
+## 其他STL容器
+- 使用其他非表容器仍可以使用线程算法，即开放性封闭（允许拓展，谢绝修改）
+- STL化的三种方法
+  - the invasive approach:侵入式做法，需要以某种方式编写容器，提供begin(),end()等基本函数，如string
+  - the noninvasive approach:非侵入式做法，提供遍历所有元素的能力，如array
+  - the wrapper approach:包装法，使用外套类来包装使句结构，暴露出STL容器类似的接口
+
+### 6.7.1 Strings
+### 6.7.2 Arrays
+- 迭代器拥有和指针一样的接口,因此可以使用某一类STL算法，如transform(),sort(),copy()
+- 自定义STL容器，利用宏定义一些类型，使能够使用标准STL容器一样使用结构,见boost/array
+
+### 6.7.2 Hash Tables
+- 未列入标准
+- hash_set hash_map hash_multiset hash_multimap
+
+
+## 6.8 手动实现refer语义
+- 使用计数指针实现共享指针地址
+
+## 6.9 容器的运用时机
+- vector:缺省状态下用
+- deque:头部和尾部均可插入；元素移除时自动减少内存；保存在不连续内存中
+- list:经常在容器中端进行插入，移除和移动；不支持随机存取
+- set/multiset:经常使用某个准则来搜寻元素
+
+## 6.10 细说容器内的型别和成员
+
+### 6.10.1 容器内型别
+- value_type :元素型别
+- reference:引用型别
+- const_reference:常数元素的引用型别
+- iterator:迭代器型别
+- const_iterator:常数迭代器型别
+- reverse_iterator:反向迭代器型别
+- constreverse_iterator:常数反向迭代器型别
+- size_type:非负整数型别
+- difference_type:非负整数型别,用于定义距离
+- key_type:map set multimap multiset 中的key的型别
+- mapped_type:元素型别map和multimap
+- key_compare:比较准则的型别,map set multimap multiset
+- value_compare:整个元素的比较型别，sets和multisets中同key_compare
+- allocator_type:配置器型别
+
+### 6.10.2 create copy destroy
+### 6.10.3 非变动性操作
+### 6.10.4 赋值操作
+### 6.10.5 直接元素存取
+### 6.10.6 可返回迭代器的各项操作

@@ -1,0 +1,82 @@
+# 7 STL iterators
+## 7.1 迭代器头文件
+- 通常不需要包含专门的头文件，因为每个容器自行定义，除了几种特别的
+## 7.2 迭代器类型
+- 不同的迭代器具有不同的能力，行进和存取能力
+- 分类（每个容器包含不同地迭代器）
+  - input iterator 向前读取
+  - output iterator 向前写入
+  - forword iterator 向前读取和写入
+  - bidirectional iterator  双向读取和写入
+  - random acess 随机存取
+### 7.2.1 input iterator
+- 只能一次一个读取数据
+- 只能递增
+### 7.2.2 output iterator
+- 只能一次一个写入数据
+- 无需比较，无法验证迭代器是否有效，写入是否成功
+- 只能递增
+### 7.2.3 forword iterator 向前读取和写入
+- 能多次指向同一集群中的同一元素
+- 存取时需要确保迭代器有效，!=end()
+- 只能递增
+
+### 7.2.4 bidirectional iterator
+- 支持递增和递减
+
+### 7.2.5 random acess 随机存取
+- 支持算术运算和比较
+
+### 7.2.6 Vector 迭代器的递增和递减
+- c++不允许修改任何基本型别的暂时值（右值不能修改）
+
+## 7.3 迭代器相关辅助函数
+- distance()
+- advance()  计算两个迭代器之间的距离，注意两个迭代器顺序和位于同一个迭代器
+- iter_swwap()
+## 7.4 迭代器配接器 Iterator Adapters
+- 逆向模式，安插模式和流
+### 7.4.1 Reverse Iterators
+- rbegin() 实际上的最后一个元素
+- end() 实际上的第一个元素的前一个元素
+- 若将正常迭代器转换成逆向迭代器，迭代器或取的值发生变化，指向前一个元素
+- 用base()将逆向迭代器转换程正常迭代器
+
+### 7.4.2 Insert Itrerators
+- *to_pos=value
+  - operator* 无实际动作,因此上式等同`to_pos=value `
+  - 赋值动作转化未insert，调用push_back(),push_front()或insert()
+  - ++to_pos 实际也是无动作的
+- 三种insert Iterators
+  - front inserters （deque list ）
+  - back inserters 利用其为vector插入元素，赋值和copy均为插入(vector deque list string)
+  - general inserters [insert(pos,value)] 所有标准容器均适用，对于关联式容器pos只是一个参考
+
+### 7.4.3 stream 迭代器
+- stream 缓冲区迭代器
+- Ostream 同insert迭代器，但是赋值操作转化为operator<<
+  - ostream_iterator<int> intWriter(cout,"\n")
+  - 没有比较方法
+- Istream
+  - 提供了比较方法
+  - 只要有一次读取失败，所有istream迭代器都会变成end_of_stream
+
+## 7.5 Iterators Traits 迭代器特性
+- 通过迭代器标志和特性(tags and traits)可以实现迭代器操作的重载
+- traits包含迭代器相关的所有信息（value_type,difference_type,iterator_category,pointer,reference）,使用它可以编写可以编写泛型程序代码
+  - 每一个迭代器提供有必要的型别定义
+  - 能够针对特定的迭代器进行特化:iterator_category可用来区分迭代器类型，由此可以针对不同类型编写不同的方法
+
+### 7.5.1 为迭代器编写泛型函数
+- value_type（迭代器型别）;
+- value_category（迭代器类型）;
+ - 将迭代器类型作为参数附加参数，调用另一个函数（特别的是调用特化函数时没有使用switch，可能是内部做了匹配）
+ - 不同的迭代器时作出上面调用的函数。只有“并非派生自其他迭代器类型”的迭代器类型，才需要特化版本
+ - 例：distance()的实作
+
+### 7.5.2 使用者自定义的迭代器（user-defined）
+- 需要为自定义迭代器提供特性（5种）
+- 提供特化的iterator_traits结构,c++标准库提供了专门的基础类别，其中后面三个参数有默认值
+   class Myiterator:public std::iterator <std::bidirectional_iterator_tag,type,std::ptrdiff_t,type*,type&>{
+   ...
+   }

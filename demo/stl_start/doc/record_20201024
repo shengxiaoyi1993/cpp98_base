@@ -1,0 +1,77 @@
+# 11 string
+- wstring string
+- char* ,const char c-string
+## 11.1 动机
+- 行为像一个基本型别
+
+### 11.1.1 && 11.1.2 实例
+- string的末尾没有"\0"
+
+## 11.2 string class 细节描述
+
+### 11.2.1 相关型别
+- basic_string<> 所有字符串类别的基本模板类
+  - 将自符型别（ascii,unicode），字符型别特性(规定复制和比较字符的方法，如不区分大小写)，内存模型加以参数化
+
+- string型别和wstring性别
+  - 分别针对char 与wchar_t(宽字符集)
+
+### 11.2.2 操作函数综览
+- string的操作函数列举
+- "\0"只有在单参数时作为特殊字符，其余情况均作为一般参数
+
+- 未提供的操作函数
+  - 正则
+  - 文本处理
+### 11.2.3 构造和析构
+- 注意是起始位置还是长度
+
+### 11.2.4  string和c-string
+- c-string 有向string 自动型别转换的函数，但没有逆向的自动型别转换函数
+- 不能用NULL代替char*,因为NULL具有整数型别，可能造成异常行为
+- data()与copy()未加'\0',c_str()加了'\0',注意data()和c_str()为原字符串所有
+- 注意c_string()和data()的声明周期
+### 11.2.5 大小和容量
+- size()和length() 相等
+- max_size() 最多能包含的字符数，一般是索引型别的最大值-1
+- capacity()重新分配内存前所能包含最大字符数
+  - 重新分配会使reference pointer iterator 失效
+  - 耗费时间
+  - 适应reverse()预先分配，与vector<>不同的是，reverse()会强制缩减
+
+### 11.2.6 元素存取（element access）
+- at() []
+- 对于const string 的[],访问有效字符后的元素会返回'\0'.其他两种情况at()与string 的[]会引发异常
+- 为允许修改string,[]的non-const 版本与at()都返回字符的引用
+
+
+
+### 11.2.7 比较 comparison
+- 比较是根据当前字符特性，通过更改特性可以适应不区分大小写等需求
+- 根据当地规则进行比较的情况，在locale class 有提供方法
+
+### 11.2.8 更改内容(modifiers)
+- assign()
+- swap()
+- clear()
+- erase()
+- insert()  由于该函数有重载，第一个参数可以是char*或者size_type, 0有两种转换可能，因此使用时需要注明
+- remove()
+- replace()
+### 11.2.9 子串和字符串接合（concatenation）
+- substr()
+- operator+
+### 11.2.10 I/O操作
+- opertaor >>  读取  跳过前置空格符，isspace(c,strm.getloc())为true
+- operator << 写入
+- getline()  逐行读取，可以指定分行符
+
+### 11.2.11 搜索和查找
+- 搜索单一字符，字符区间，若干字符各一个
+- 向前搜索和向后搜寻
+- 字符串头部或内部任何地方开始搜寻
+
+### 11.2.12 数值npos的意义
+- 设计为-1，注意要使用string::size_type作为返回值
+
+### 11.2.13 string对迭代器的支持

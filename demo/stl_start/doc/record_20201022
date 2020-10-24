@@ -1,0 +1,115 @@
+# 9 STL Algorithms
+## 9.1 header files
+- <algorithms> 辅助函数
+- <numeric> 数值计算
+- <functional> STL算法常用到仿函数和函数配接器
+
+## 9.2 算法概览
+
+### 9.2.1 简介
+- 所有STL算法都被用来处理一个或者多个区间。第一区间，需要提供首尾，且指向同一容器，首前于尾；第二区间只提供首，但要保证足够的空间
+- 采用覆盖而非安插模式(通过特殊迭代器可以改为安插模式)
+
+- 某些STL算法允许传递自定义操作，一段函数或者仿函数
+### 9.2.2 算法分类
+- 尾词 _if 以_if为尾词的函数要求传递函数或者仿函数；若算法以额外参数传递仿函数或函数，则是利用重载
+- 尾词 _copy 元素不光被操作，还被复制到目标区域
+
+
+- 非变动算法（nonmodifying algorithms）
+  - 即不改变元素次序给不改变元素值。通过input迭代器和output迭代器完成工作
+  - 举例
+    - for_each()
+    - count()
+    - count_if()
+    - min_element()
+    - max_element()
+    - find()
+    - find_if()
+    - search_n()
+    - search()
+    - find_end()
+    - find_first_of()
+    - adjacent_find()
+    - equal()
+    - mismatch()
+    - lexicographical_compare()
+- 变动性算法（modifying algorithms）
+  - 要不直接改变元素值，要不在拷贝过程中改变元素值
+  - 举例
+    - for_each()
+    - copy()
+    - copy_backword()
+    - transform()
+    - merge()
+    - swap_ranges()
+    - fill()
+    - fill_n()
+    - generate()
+    - generate_n()
+    - replace()
+    - replace_if()
+    - replace_copy()
+    - replace_copy_if()
+- 移除性算法（removing algorithms）
+  - 可以移除某区间的元素，或者在拷贝过程中移除元素
+  - 目标区间不能是关联式容器
+  - 举例
+    - remove()
+    - remove_if()
+    - remove_copy()
+    - remove_copy_if()
+    - unique()
+    - unique_copy()
+  - 移除算法只是将不需要的值往前覆盖应被移除的元素
+
+- 变序性算法（mutating algorithms）
+  - 通过元素值的赋值和交换，改变元素顺序
+  - 不能以关联式容器为目标
+  - 举例
+    - reverse()
+    - reverse_copy()
+    - rotate()
+    - rotate_copy()
+    - next_permutation()
+    - prev_permutation() 全排列
+    - random_shuffle()
+    - partition()
+    - stable_partiton()
+
+- 排序算法(sorting algorithms)
+  - 不适用于关联式容器
+  - 举例
+    - sort()
+    - stable_sort()
+    - partial_sort_copy()
+    - nth_element()
+    - partition()
+    - stable_sort()
+    - make_heap()
+    - push_heap()
+    - pop_heap()
+    - sort_heap()
+- 已序区间算法（Sorted Range Algorithms）
+  - binary_seatch()
+  - includes()
+  - lower_bound()
+  - upper_bpound()
+  - equal_range()
+  - merge()
+  - set_union()
+  - set_intersection()
+  - set_difference()
+  - set_symmetric_difference()
+  - inplace_merage()
+- 数值算法(numeric algorithms)
+  - accumulate()
+  - inner_product()
+  - adjacent_difference()
+  - partial_sum()
+
+## 9.3 辅助函数
+
+...后续对提到的函数都举一个例子
+
+- 注：string与一般性的STL算法形式上有很大差别，原因是历史性原因

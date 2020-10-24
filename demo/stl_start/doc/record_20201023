@@ -1,0 +1,50 @@
+# 10 特殊容器 special containers
+
+
+- 三种标准容器配接器
+  - stack
+  - queue
+  - priority queue
+- bitset
+  - 可含任意bits的容器
+  - 注意与vector<bool> 区别
+
+## 10.1 stack
+- push()置入元素，pop()移除元素，后进先出，即lifo
+- 只是将各项操作转化成内部容器的调用，可以用任意序列式容器支持stack
+- std::stack<int> st; std::stack<int,std::vector<int> > st;第二参数缺省为queue
+
+
+### 10.1.1 核心接口
+- push()
+- top()
+- pop()
+- top()与pop()使用前需要用size()与empty()进行检查
+- == 两stack元素数量相同，且同序号元素相同，则两者相等
+### 10.1.2 实例
+### 10.1.3 class stack<> 内部细节
+### 10.1.4 自定义地Stack class
+
+## 10.2 queue
+- push()置入元素，pop()移除元素，fifo，先进先出
+- 只是将各项操作转化成内部容器的调用，可以用任意序列式容器支持stack
+### 10.2.1 核心接口
+-
+### 10.1.2 实例
+### 10.1.3 内部细节
+
+## 10.3 priority queue
+- 元素根据优先级被读取
+- top()/pop()取出和移除的是优先级最高的元素
+- 模板有第三个参数，为仿函数或函数，缺省值为less<>，此时高优先级的值为较大的值
+### 10.1.1 核心接口
+- push()
+- top()
+- pop()
+
+## 10.4 Bitsets
+- 内含bits且大小固定，尺寸由模板确定，若要修改使用vector<bool>
+- 管理各式flag并以组合来表示变量
+- 整数值与位序列之间的转化方便（而不需要移位操作）
+### 10.4.1 实例
+### 10.4.2 细节讨论

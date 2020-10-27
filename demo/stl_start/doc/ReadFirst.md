@@ -252,4 +252,28 @@
 
 ### 6.4.3 Exception Handling
 - 除了sort()与赋值,要么成功要么无效
+<<<<<<< HEAD
 - sort()与赋值：异常发生时不会发生泄露资源，不与容器恒常性发生冲突
+=======
+- sort()与赋值：异常发生时不会发生泄露资源年，不与恒常性冲突
+
+
+## 6.5 Set and Multisets
+- <set>
+- 根据特定的排序准则进行排序
+- multisets 允许重复，sets不允许
+- 满足assignable,copyable,comparable的元素，都可以作为元素
+
+- 排序准则
+  - 反对称：antisymmetric x<y为真，则y<x为假
+  - 可传递：transitive x<y,y，y<z,则x<z
+  - 非自反：irreflexive x<x永远为假
+  - 注：以上是STL学术理论的一部分，见《泛型程序设计与STL》
+### 6.5.1 set与Multisets的能力
+- 通常以平衡二叉树,事实上是以红黑树
+- 自动排序使二叉树在搜索元素时具有良好性能，是线性搜索时间的1/50
+- 不提供直接存取元素的操作函数
+- 使用迭代器间接存取元素时，元素值是常数
+
+### 6.5.2 
+>>>>>>> 3bb8a5e36e50fa780dca2ab557cc426cd9bb38d6

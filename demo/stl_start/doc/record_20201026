@@ -7,3 +7,62 @@
 - 针对标量型别：float double long
 ### 12.1.1 complex 实例
 ### 12.1.2 各种操作
+- 隐式型别转换  只允许高精确度传低精度
+- 比较comparison 只有是否相等；因此不能在关联式容器中使用complex作为型别
+- 支持四种基本运算，及正负号
+- 输入输出
+- 超越函数 transcendental Functions (三角函数，指数等)
+### 12.1.3 细节讨论
+
+
+## 12.2 valarrays
+- 进行数值数组的运算，是一维的，但是可以通过特殊技巧得到多维效果
+- 设计的不好，需要一些转型操作
+
+
+### 12.2.1 认识
+- 计算的结果也是valarray 且每个元素为对每个元素进行计算的结果
+- 定义了所有普通数值运算，也可通过索引取元素（取诀于元素支持的操作的含义）
+- 注意而原操作数两个元素的型别需要一致
+- operator==操作会生成valarray;无法用operator<进行比较
+
+- 超越函数
+  - 支持
+
+### 12.2.2 valarray的子集
+- operator[]可以定义valarray的自己.
+- 缓式评估技法（lazy evaluation）:在non-const valarray对象中返回一个临时对象，不包含真实子集的值，只包含该子集的定义；直到需要最终结果时，才会对该表达式进行评估核定(evaluation)
+- const对象具有实值
+- 只有目标子集与源子集没有共同元素时，缓式评估技法才能确保正确
+- 定义子集的方法
+  - slice 切割
+  - general slice 一般化切割
+  - masked subset  屏蔽式子集
+  - indirect subset  间接式子集
+- c++标准库 没有要求valarray子集（slice_array<>）提供和valarray一致的操作，因此需要显示转型；由于转型过程中会产生临时对象，因此会有性能损耗
+- 调用者必须确保子集索引合法
+- 组合成矩阵运算
+
+- 一般化切割general slice
+  - 在一维中进行多维运算的能力
+  - 起始索引 元素数量 元素间距 （元素数量和元素间距也是数组）
+  - gslice作为参数传给valarray的operator[]可以得到具体子集
+  -
+
+ - masked subsets 屏蔽式子集
+   - 元素为bool值的valarray传入operator[]
+
+- 间接式子集 indirect subset
+  - 传递一个索引数组
+
+
+### 12.2.3 细节讨论
+-
+
+### 12.2.4 子集类别细节讨论
+-
+
+
+## 12.3 全局型数值函数
+- <cmath> <cstdlib>
+- c++针对不同类型提供重载，但可能造成模棱两可的情况

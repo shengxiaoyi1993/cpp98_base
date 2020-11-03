@@ -1,1 +1,187 @@
-# 
+# 13 stream classes 输入输出
+- 不仅限于文件，屏幕和键盘，将任意数据格式化，处理外部表述
+
+
+## 13.1 stream基本概念
+### 13.1.1 stream对象
+### 13.1.2 stream类别
+### 13.1.3 全局性stream对象
+- cin
+- cout
+- cerr
+- clog
+- 以便使用重定向分离
+
+### 13.1.4 stream 操作符
+- <<输入 ，>>输出
+### 13.1.5 操控器manipulaters
+- 如dec hex oct endl ends flush ws
+- 改变输入或者格式化输出的方式
+
+### 13.1.6
+
+## 13.2 基本的stream类和stream对象
+- ios_base basic_ios<> basic_istream<> basic_ostream<> basic_iostream<> basic_streambuf<>
+### 13.2.2 全局性stream对象
+### 13.2.3 头文件
+- <iosfwd>
+- <streambuf>
+- <istream>
+- <ostream>
+- <iostream>
+
+## 13.3 标准stream操作符<< 和 >>
+### 13.3.1 output操作符 <<
+- 所有基本型别，包括char*,void*,bool
+- 转换成字符串然后发给stream
+- 计算顺序从左到右
+
+### 13.3.2 >>
+- 同上
+
+### 13.3.3 特殊型别的I/O
+- bool
+  - 缺省情况下以数字显示，非0亦非1为ios::failbit，并可能抛出异常
+- char与wchar_t
+  - 缺省情况下会跳过起头的空格，可以清除skipws标志或者利用get()获取全部字符
+- char*
+  - 只读入真正的文字，缺省情况下会跳过起头的空格，一直读到非空格或者end-of-file
+- void*
+  - 打印地址
+- stream buffers
+  - 读取与拷贝文件
+- 自定义型别
+  - 考虑所有可能的格式与错误条件，需要遵循一定规则，见下
+
+## 13.4 stream的状态
+### 13.4.1 标识stream状态的常数
+- goodbit  并不指某个位被设置，而是指所有位均被置为0
+- eofbit  end-of-file 在读有效字符的下一个时被设立，同时failbit也会被设立
+- failbit 一些操作失败
+- badbit 比failbit更严重
+- 常数由basic_ios维护，在ios_basic中定义；stream buffers 中没有
+- 没有stream buffer badbit始终被设立
+
+### 13.4.2 处理stream状态的一些成员函数
+- clear() 不带参数清除所有标识；带参数
+- 若设置了failbit，除非显示清除，否则无法进行下一个操作
+- 状态表示的之前的类积状态，而非上次操作；若要确定某次操作后的状态，需要先设立goodbit
+### 13.4.3 stream状态与布尔测试条件
+- operator void* () while(std::cin){...}
+- operator !() while(std::cin>>x){}
+- 使用fail()具有更佳的可读性
+### 13.4.4 stream的状态和异常
+- exception(flag) 设立会引发异常的标识；传入0（std::ios::goodbit）则不会引发任何异常；只要满足其中的一种类型就会抛出异常
+- exception() 得到引发目前异常的标志
+## 13.5 标准I/O函数
+- 用成员变量来进行输入输出，开头不跳过空格
+
+### 13.5.1 输入用的成员函数
+- 直接运用stream buffer比使用istream的成员函数更高效，避免了构造sentry的额外开销
+### 13.5.2 输出用的成员函数
+- put()
+- write()
+- flush()
+
+### 13.5.3 运用实例
+## 13.6 操控器 (manipulaters)
+- 定义于<istream> <ostream>
+- flush endl ends ws
+### 13.6.1 操控器的运作
+- 生成一个ostream对象
+
+### 13.6.2 自定义操控器
+
+## 13.7 格式化(formatting)
+- 格式标志，入数字精度，填充字符和数字进制等
+- 国际化议题
+
+
+### 13.7.1 格式标志
+- 成员函数
+- 两个操控器 ：在改写<<语句或者读取>>语句能够设定和清除
+### 13.7.2 布尔值的I/O格式
+- boolalpha标志 设置后bool值被显示为true false
+- 操控器boolalpha noboolalpha
+### 13.7.3 字段宽度，填充字符，位置调整
+- fill() width()
+- 字段宽度不能用来将输出截尾
+- 位置标识
+- 操控器 setw(val) setfill(c) left right internal
+- 输入时运用字段，若width()不是0，最多读取width()-1
+### 13.7.4 正记号于大写字符
+- showpos uppercase
+- 操控器 showpos noshowpos uppercase nouppercase
+
+### 13.7.5 数值进制
+- oct dec hex none
+- 进制标志会影响输入
+- 操控器：showbase noshowbase
+### 13.7.6 浮点数表示法
+- 控制小数输出或者科学计数法：fixed scientific none
+- 控制精度：precision()
+- 强制书写小数点
+- 操控器
+  - showpoint
+  - noshowpoint
+  - setprecision(val)
+  - fixed
+  - scientific
+
+### 13.7.7 一般性格式定义
+- <<读取数值时跳过空格 skipws
+- 每次输出后清空output缓存区 nounitbuf ;cerr与wcerr已预先蛇注此标志
+
+## 13.8 国际化
+- 为stream 设置locale对象 imbue(loc) /getloc()
+- 字符集间的转换
+
+
+## 13.9 文件存取
+- fstream
+- 相对于c，构造时自动打开，析构时自动关闭
+- 对于可读写的stream不能在读写操作之间任意转换其读写属性，必须seek到当前位置再转换。
+- 在构造之后检查其状态来判断是否打开
+
+### 13.9.1 文件标志
+- in out app ate trunc binary
+
+### 13.9.2 随机存取
+- 绝对位置与相对位置
+- 注意位置的型别 std::ios::pos_type
+- 如果通过接口函数打印内容，必须先调用clear()清除file的状态,因为这些函数到达文件末尾时会设立ios::eofbit 和ios::failbit
+
+### 13.9.3 使用文件描述符(file descriptors)
+-整数，辨识某个开启的I/O通道；这些通道可能被连接至文件，控制台，其他行程或其他I/O措施
+
+## 13.10 连接inputstream outputstream
+### 13.10.1 tie()完成松耦合(loose coupling)
+- 被连接的ostream,即tie()中的参数，在另一个stream上执行输入输出操作前会先清空ostream的缓存（调用fflush()）
+
+### 13.10.2 以stream的缓冲区完成紧耦合(tight coupling)
+- 通过rdbuf()使不同的streams共享同一个缓冲区
+- 使得数个stream对象可以从同一个input通道读取信息，或者对同一个output通道写入信息
+- 应用场景之一就是不同stream设备不同的格式标志，但是都输出到stdout
+- 值得注意的是istream ostream析构时并不释放streambuf ,若要确保output缓冲区被清空需要手工操作
+
+
+### 13.10.3 将标准stream重定向（redirecting）
+- 见上，std::cout通过rdbuf()更改标准缓冲区
+- 注意fstream在构造时分配缓冲区，析构时销毁；std::cout若重定向至fstream,会导致fstream析构后std::cout无法正常输出或析构，因此注意保存旧的缓冲区进行复原
+
+
+### 13.10.4 用于读写的streams
+- 运用fstream
+- 或者运用两个不同的stream对象，一个用于读一个用于写，绑定streambuf（打开某个文件）
+- 注意在写与读之间需要由一个seek()操作防止出错，除非读至文件末尾（上文有类似的叙述）
+
+
+## 13.11 string stream class
+- 提供了缓冲区，但没有I/O通道
+- 以独立于真实I/O装置以外的方式处理I/O
+
+### 13.11。1 string stream class
+- str()设置缓冲区
+- 往string 输出数据时需要提取字符串str(),再输出，否则会转换成void* 输出地址
+- input stream 的主要用途，按格式从现有字符串按一定格式读取数据
+- 运用文件开启标志可以控制覆盖或者添加等行为

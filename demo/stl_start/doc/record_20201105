@@ -28,3 +28,54 @@
 - language[_area[.code]]
 - POSIX 与 X/Open标准
 ### 14.2.1 运用locales
+- C程序 setlocale()设定，对一些I/O操作函数产生影响，locales不可扩展
+- c++ 封装在locale对象中，然后安装到I/Ostream中
+  - 标准C locale  locale::classic() | std::locale("C")
+  - 设置stream.imbue(locale())
+  - 默认读取环境变量中的LANG来确定locale
+  - local::global()可以设置全局的local对象，之后由缺省构造函数产生的locale对象会相应改变；但不会改变之前保存到stream的locale
+  -
+
+### 14.2.2 locale facets
+- local 不可变，若需要安装新的facts，需要心产生新locale
+
+## 14.3 locale细节讨论
+- 新的locale 可由已有的locale 和fact实作
+- 名字相同的locale 往往时相同的，因为是相同名字的fact以相同的顺序组合成的
+- ()运算使得可以使用locale作为比较准则
+## 14.4 facets 细节讨论
+- 必要的 facts
+- 产生自定义的facts (必要)
+  - public形式派生自locale::facet(定义了对象内部的引用计数运用)；copy构造函数与assigned()操作符为private
+  - 保证类型安全，型别为locale::id的public static member
+- 非必要，但标准facts会遵循
+  - 所有成员函数均声明为const
+  - 所有poblic 函数都不是virtual
+### 14.4.1 数值格式化
+- 数值标点符号
+- 数值格式化
+- 数值解析
+
+### 14.4.2 时间和日期格式化
+- 时间和日期的解析
+- 时间和日期的格式化
+- 要求么每个locale都储存两个具现体time_put<char> time_put<wchar_t>
+### 14.4.3 货币符号格式化
+- money_punct money_get money_put
+- 货币符号 货币符号的布置，正负值，千分位...
+- 货币格式化
+- 货币的解析
+
+
+### 14.4.4 字符的分类和使用
+- ctype cofecvt
+- 针对char 而作的ctype特话版本
+- 用于字符分类的全局辅助函数
+- 字符编码转换
+
+
+### 14.4.5 字符串校勘 string collation
+
+
+### 14.4.6 信息国际化
+- message fact 从文件中读取一些信息，提供类似perror的功能

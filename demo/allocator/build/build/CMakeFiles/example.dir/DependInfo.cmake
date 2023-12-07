@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp" "C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/build/build/CMakeFiles/example.dir/C_/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp.obj"
-  "C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp" "C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/build/build/CMakeFiles/example.dir/C_/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp.obj"
+  "/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp" "/home/sxy/Github/cpp98_base/demo/allocator/build/build/CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp.o"
+  "/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp" "/home/sxy/Github/cpp98_base/demo/allocator/build/build/CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

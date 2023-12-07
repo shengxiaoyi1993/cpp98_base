@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp
+/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp
 export.h
-C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.h
+/home/sxy/Github/cpp98_base/demo/allocator/src/export.h
 iostream
 -
 
-C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.h
+/home/sxy/Github/cpp98_base/demo/allocator/src/export.h
 vector
 -
 iostream
 -
 
-C:/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp
+/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp
 iostream
 -
 memory

@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++98  -rdynamic CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/auxiliary_func/src/main.cpp.o CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/auxiliary_func/src/export.cpp.o  -o example 

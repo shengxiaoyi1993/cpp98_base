@@ -53,5 +53,5 @@ int main(){
 	}catch(MyErr e){
 		cout << "捕获异常" << endl;
 	}
-	system("pause");
+	// system("pause");
 }

@@ -1,6 +1,9 @@
 #include <iostream>
 #include "export.h"
 
+
+
+
  int main() {
 
    TestObj obj0(6,88.9);
@@ -20,7 +23,6 @@
    }
 
    //must has this
-   using namespace std::rel_ops;
    
    if(obj0 > obj1){
      std::cout << "obj0 > obj1!" << '\n';

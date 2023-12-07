@@ -9,6 +9,11 @@
 //  return 0;
 //}
 
+
+
+/// 该方法将申请内存/构造函数，析构函数/释放内存过程相分离，在某些场景具有意义
+
+
 #include <iostream>
 #include <memory>
 using namespace std;

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <utility>
 
+using namespace std::rel_ops;
+
 class TestObj{
   int _vint;
   double _vdouble;

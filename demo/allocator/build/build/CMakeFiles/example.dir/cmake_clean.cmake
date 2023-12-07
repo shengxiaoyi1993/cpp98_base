@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/example.dir/C_/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp.obj"
-  "CMakeFiles/example.dir/C_/msys64/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp.obj"
-  "example.exe"
-  "example.exe.manifest"
+  "CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/allocator/src/main.cpp.o"
+  "CMakeFiles/example.dir/home/sxy/Github/cpp98_base/demo/allocator/src/export.cpp.o"
   "example.pdb"
-  "libexample.dll.a"
+  "example"
 )
 
 # Per-language clean rules from dependency scanning.
